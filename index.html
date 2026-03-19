@@ -833,7 +833,7 @@
     const birdies = parseInt(document.getElementById('birdies-input').value) || 0;
 
     // LEVEL 3 — Both massively over (the full send)
-    if (beers > 80 && birdies > 24) {
+    if (beers >= 100 && birdies > 24) {
       showResult(
         'tier-delusional', '🌈🦄💀',
         'HOSPITALISED & DISQUALIFIED',
@@ -843,7 +843,7 @@
     }
 
     // LEVEL 2 — Significantly over on both
-    if (beers > 60 && birdies > 18) {
+    if (beers >= 75 && birdies > 18) {
       showResult(
         'tier-delusional', '🌈🦄',
         'CLINICALLY DELUSIONAL',
@@ -853,7 +853,7 @@
     }
 
     // LEVEL 1 — Over on both
-    if (beers > 40 && birdies > 12) {
+    if (beers >= 51 && birdies > 12) {
       showResult(
         'tier-delusional', '🤯',
         'DANGEROUSLY OPTIMISTIC',
@@ -863,7 +863,7 @@
     }
 
     // Over on beers only
-    if (beers > 40) {
+    if (beers >= 51) {
       showResult(
         'tier-delusional', '🚑',
         'MEDICAL EMERGENCY (BEER DIVISION)',
