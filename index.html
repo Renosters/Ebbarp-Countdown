@@ -1,0 +1,888 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Coon & Friends i Ebbarps By 2026</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Bebas+Neue&family=Crimson+Pro:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --green-dark: #1a3a1a;
+      --green-mid: #2d5a27;
+      --green-light: #4a8a3a;
+      --cream: #f5f0e0;
+      --cream-dark: #e8dfc8;
+      --gold: #c9a84c;
+      --gold-light: #e8c96a;
+      --amber: #d4691e;
+      --brown: #8b4513;
+      --sky: #87b5d4;
+      --white: #fdfaf3;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background-color: var(--green-dark);
+      color: var(--cream);
+      font-family: 'Crimson Pro', Georgia, serif;
+      overflow-x: hidden;
+      min-height: 100vh;
+    }
+
+    /* === FAIRWAY TEXTURE BACKGROUND === */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background:
+        repeating-linear-gradient(
+          90deg,
+          transparent,
+          transparent 60px,
+          rgba(255,255,255,0.015) 60px,
+          rgba(255,255,255,0.015) 120px
+        ),
+        repeating-linear-gradient(
+          180deg,
+          transparent,
+          transparent 60px,
+          rgba(0,0,0,0.04) 60px,
+          rgba(0,0,0,0.04) 120px
+        );
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .page-wrapper {
+      position: relative;
+      z-index: 1;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 1.5rem 4rem;
+    }
+
+    /* === HEADER === */
+    header {
+      text-align: center;
+      padding: 3rem 1rem 1rem;
+    }
+
+    .flag-icon {
+      font-size: 3rem;
+      animation: flagwave 2s ease-in-out infinite;
+      display: inline-block;
+    }
+
+    @keyframes flagwave {
+      0%, 100% { transform: rotate(-5deg); }
+      50% { transform: rotate(5deg); }
+    }
+
+    .headline {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(3.5rem, 10vw, 7rem);
+      letter-spacing: 0.05em;
+      color: var(--gold);
+      text-shadow: 4px 4px 0 var(--green-dark), 2px 2px 0 rgba(0,0,0,0.4);
+      line-height: 0.95;
+      margin: 0.2rem 0;
+    }
+
+    .subheadline {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: clamp(1rem, 3vw, 1.5rem);
+      color: var(--cream-dark);
+      letter-spacing: 0.15em;
+      margin-top: 0.5rem;
+    }
+
+    .date-label {
+      display: inline-block;
+      margin-top: 0.8rem;
+      font-family: 'Bebas Neue', sans-serif;
+      letter-spacing: 0.2em;
+      font-size: 1.1rem;
+      color: var(--amber);
+      border: 1px solid var(--amber);
+      padding: 0.2rem 1.2rem;
+      border-radius: 2px;
+    }
+
+    /* === COUNTDOWN === */
+    .countdown-section {
+      margin: 2.5rem auto 1rem;
+      text-align: center;
+    }
+
+    .countdown-label {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 1.1rem;
+      color: var(--gold-light);
+      margin-bottom: 1rem;
+      letter-spacing: 0.1em;
+    }
+
+    .countdown-grid {
+      display: flex;
+      justify-content: center;
+      gap: clamp(0.5rem, 2vw, 1.5rem);
+      flex-wrap: wrap;
+    }
+
+    .countdown-box {
+      background: linear-gradient(160deg, rgba(45,90,39,0.8), rgba(26,58,26,0.95));
+      border: 2px solid var(--gold);
+      border-radius: 4px;
+      padding: clamp(0.8rem, 2vw, 1.2rem) clamp(1rem, 3vw, 2rem);
+      min-width: clamp(70px, 15vw, 110px);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.4), inset 0 1px 0 rgba(201,168,76,0.2);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .countdown-box::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold-light), transparent);
+    }
+
+    .countdown-number {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2.8rem, 7vw, 5rem);
+      color: var(--gold-light);
+      line-height: 1;
+      text-shadow: 0 0 20px rgba(201,168,76,0.4);
+    }
+
+    .countdown-unit {
+      font-family: 'Crimson Pro', serif;
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--cream-dark);
+      margin-top: 0.2rem;
+      opacity: 0.8;
+    }
+
+    .colon {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2rem, 5vw, 4rem);
+      color: var(--gold);
+      opacity: 0.6;
+      align-self: flex-start;
+      padding-top: clamp(0.8rem, 2vw, 1.2rem);
+      animation: blink 1s step-end infinite;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 0.6; }
+      50% { opacity: 0.15; }
+    }
+
+    /* === DIVIDER === */
+    .divider {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin: 2.5rem 0;
+      color: var(--gold);
+      opacity: 0.5;
+    }
+    .divider::before, .divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    }
+
+    /* === THE GANG === */
+    .gang-section {
+      margin: 0 auto 2rem;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      text-align: center;
+      font-size: clamp(1.2rem, 3vw, 1.8rem);
+      color: var(--gold-light);
+      margin-bottom: 2rem;
+      letter-spacing: 0.05em;
+    }
+
+    .golfers-row {
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+      gap: clamp(0.5rem, 3vw, 2rem);
+      flex-wrap: wrap;
+    }
+
+    .golfer {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      animation: fadeUp 0.8s ease both;
+    }
+
+    .golfer:nth-child(1) { animation-delay: 0.1s; }
+    .golfer:nth-child(2) { animation-delay: 0.25s; }
+    .golfer:nth-child(3) { animation-delay: 0.4s; }
+    .golfer:nth-child(4) { animation-delay: 0.55s; }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .golfer svg {
+      filter: drop-shadow(2px 4px 6px rgba(0,0,0,0.5));
+      transition: transform 0.3s ease;
+    }
+    .golfer:hover svg {
+      transform: translateY(-5px) rotate(-2deg);
+    }
+
+    .golfer-name {
+      font-family: 'Bebas Neue', sans-serif;
+      letter-spacing: 0.1em;
+      font-size: 0.85rem;
+      color: var(--cream-dark);
+      opacity: 0.7;
+    }
+
+    /* === PREDICTOR === */
+    .predictor-section {
+      max-width: 700px;
+      margin: 0 auto;
+      background: linear-gradient(160deg, rgba(45,90,39,0.5), rgba(26,58,26,0.7));
+      border: 1px solid rgba(201,168,76,0.4);
+      border-radius: 6px;
+      padding: clamp(1.5rem, 4vw, 2.5rem);
+      backdrop-filter: blur(4px);
+    }
+
+    .predictor-section .section-title {
+      margin-bottom: 1.5rem;
+    }
+
+    .fields-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    @media (max-width: 480px) {
+      .fields-row { grid-template-columns: 1fr; }
+    }
+
+    .field-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .field-group label {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 1rem;
+      color: var(--gold-light);
+    }
+
+    .field-group label span {
+      display: block;
+      font-size: 0.75rem;
+      font-style: normal;
+      opacity: 0.6;
+      font-family: 'Crimson Pro', serif;
+      letter-spacing: 0.05em;
+    }
+
+    .field-group input[type="number"] {
+      background: rgba(26,58,26,0.8);
+      border: 1px solid rgba(201,168,76,0.5);
+      border-radius: 3px;
+      color: var(--white);
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2rem;
+      letter-spacing: 0.05em;
+      padding: 0.5rem 1rem;
+      width: 100%;
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      -moz-appearance: textfield;
+    }
+
+    .field-group input[type="number"]::-webkit-inner-spin-button,
+    .field-group input[type="number"]::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+    }
+
+    .field-group input[type="number"]:focus {
+      border-color: var(--gold);
+      box-shadow: 0 0 0 2px rgba(201,168,76,0.15);
+    }
+
+    .emoji-label {
+      font-size: 1.5rem;
+    }
+
+    .judge-btn {
+      display: block;
+      width: 100%;
+      background: linear-gradient(135deg, var(--gold) 0%, var(--amber) 100%);
+      color: var(--green-dark);
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.4rem;
+      letter-spacing: 0.15em;
+      border: none;
+      border-radius: 3px;
+      padding: 0.9rem 2rem;
+      cursor: pointer;
+      transition: transform 0.15s, box-shadow 0.15s;
+      box-shadow: 0 4px 15px rgba(201,168,76,0.3);
+    }
+
+    .judge-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(201,168,76,0.4);
+    }
+
+    .judge-btn:active {
+      transform: translateY(0);
+    }
+
+    /* === RESULT === */
+    .result-box {
+      margin-top: 1.5rem;
+      padding: 1.5rem;
+      border-radius: 4px;
+      text-align: center;
+      display: none;
+      animation: popIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) both;
+    }
+
+    @keyframes popIn {
+      from { opacity: 0; transform: scale(0.8); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    .result-box.show { display: block; }
+
+    .result-emoji {
+      font-size: 3rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .result-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2.2rem;
+      letter-spacing: 0.1em;
+      margin-bottom: 0.3rem;
+    }
+
+    .result-text {
+      font-family: 'Crimson Pro', serif;
+      font-style: italic;
+      font-size: 1.1rem;
+      line-height: 1.5;
+      opacity: 0.9;
+    }
+
+    .tier-loser { background: rgba(139,69,19,0.3); border: 1px solid rgba(139,69,19,0.6); color: #f4a261; }
+    .tier-casual { background: rgba(74,100,58,0.3); border: 1px solid rgba(74,100,58,0.6); color: var(--cream); }
+    .tier-solid { background: rgba(45,90,39,0.4); border: 1px solid rgba(74,138,58,0.6); color: var(--cream); }
+    .tier-hero { background: rgba(201,168,76,0.2); border: 1px solid var(--gold); color: var(--gold-light); }
+    .tier-delusional { background: rgba(80,0,80,0.4); border: 1px solid rgba(180,0,180,0.5); color: #e0a0e0; }
+
+    /* === FOOTER === */
+    footer {
+      text-align: center;
+      margin-top: 3rem;
+      font-size: 0.8rem;
+      opacity: 0.4;
+      font-family: 'Crimson Pro', serif;
+      letter-spacing: 0.1em;
+    }
+
+    /* === CLOUDS / SCENERY === */
+    .scenery {
+      position: relative;
+      height: 60px;
+      overflow: hidden;
+      margin: 1rem 0;
+      opacity: 0.3;
+    }
+
+    .cloud {
+      position: absolute;
+      background: var(--sky);
+      border-radius: 50px;
+      animation: drift linear infinite;
+    }
+
+    @keyframes drift {
+      from { transform: translateX(-200px); }
+      to { transform: translateX(calc(100vw + 200px)); }
+    }
+
+  </style>
+</head>
+<body>
+<div class="page-wrapper">
+
+  <!-- HEADER -->
+  <header>
+    <div class="flag-icon">⛳</div>
+    <div class="headline">The Coon<br>& Friends</div>
+    <div class="subheadline">at Ebbarps By — The Annual Gentlemen's Golf Expedition</div>
+    <div class="date-label">3rd April, 2026</div>
+  </header>
+
+  <!-- COUNTDOWN -->
+  <section class="countdown-section">
+    <div class="countdown-label">— The fairway opens in —</div>
+    <div class="countdown-grid">
+      <div class="countdown-box">
+        <div class="countdown-number" id="cd-days">--</div>
+        <div class="countdown-unit">Days</div>
+      </div>
+      <div class="colon">:</div>
+      <div class="countdown-box">
+        <div class="countdown-number" id="cd-hours">--</div>
+        <div class="countdown-unit">Hours</div>
+      </div>
+      <div class="colon">:</div>
+      <div class="countdown-box">
+        <div class="countdown-number" id="cd-mins">--</div>
+        <div class="countdown-unit">Minutes</div>
+      </div>
+      <div class="colon">:</div>
+      <div class="countdown-box">
+        <div class="countdown-number" id="cd-secs">--</div>
+        <div class="countdown-unit">Seconds</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider">⛳</div>
+
+  <!-- THE GANG -->
+  <section class="gang-section">
+    <div class="section-title">— The Fellowship of the Fairway —</div>
+    <div class="golfers-row">
+
+      <!-- GOLFER 1: BLONDE -->
+      <div class="golfer">
+        <svg width="110" height="200" viewBox="0 0 110 200" xmlns="http://www.w3.org/2000/svg">
+          <!-- Shadow -->
+          <ellipse cx="55" cy="198" rx="30" ry="5" fill="rgba(0,0,0,0.3)"/>
+          <!-- Legs -->
+          <rect x="38" y="148" width="14" height="50" rx="6" fill="#d4a076"/>
+          <rect x="58" y="148" width="14" height="50" rx="6" fill="#d4a076"/>
+          <!-- Shoes -->
+          <ellipse cx="45" cy="198" rx="12" ry="5" fill="#3a2010"/>
+          <ellipse cx="65" cy="198" rx="12" ry="5" fill="#3a2010"/>
+          <!-- Body: Vintage argyle sweater vest (cream/green) -->
+          <rect x="30" y="90" width="50" height="62" rx="8" fill="#e8dfc8"/>
+          <!-- Argyle pattern -->
+          <polygon points="55,92 70,115 55,138 40,115" fill="none" stroke="#2d5a27" stroke-width="1.5" opacity="0.5"/>
+          <polygon points="55,92 70,115 55,138 40,115" fill="none" stroke="#c9a84c" stroke-width="0.7" opacity="0.4"/>
+          <circle cx="55" cy="115" r="3" fill="#2d5a27" opacity="0.3"/>
+          <!-- Collar/shirt -->
+          <path d="M44,90 Q55,82 66,90" fill="#fff" stroke="#ccc" stroke-width="1"/>
+          <!-- Arm left (holding club up) -->
+          <rect x="14" y="88" width="18" height="12" rx="6" fill="#e8dfc8" transform="rotate(-50 23 94)"/>
+          <!-- Arm right (relaxed) -->
+          <rect x="78" y="92" width="18" height="12" rx="6" fill="#e8dfc8" transform="rotate(20 87 98)"/>
+          <!-- Club -->
+          <line x1="18" y1="72" x2="30" y2="160" stroke="#5a3a1a" stroke-width="3" stroke-linecap="round"/>
+          <rect x="12" y="68" width="12" height="6" rx="2" fill="#888"/>
+          <!-- Head -->
+          <circle cx="55" cy="62" r="26" fill="#f5d5b0"/>
+          <!-- Hair: BLONDE, swept with cap -->
+          <path d="M30,55 Q35,35 55,38 Q75,35 80,55" fill="#d4a84c"/>
+          <!-- Vintage flat cap -->
+          <ellipse cx="55" cy="44" rx="26" ry="8" fill="#2d5a27"/>
+          <rect x="30" y="36" width="50" height="12" rx="6" fill="#2d5a27"/>
+          <ellipse cx="33" cy="44" rx="5" ry="4" fill="#244a20"/><!-- brim -->
+          <!-- Eyes -->
+          <circle cx="47" cy="60" r="3" fill="#4a3010"/>
+          <circle cx="63" cy="60" r="3" fill="#4a3010"/>
+          <circle cx="48" cy="59" r="1" fill="white"/>
+          <circle cx="64" cy="59" r="1" fill="white"/>
+          <!-- Smile -->
+          <path d="M47,70 Q55,78 63,70" fill="none" stroke="#a06040" stroke-width="1.5" stroke-linecap="round"/>
+          <!-- Moustache -->
+          <path d="M49,67 Q55,64 61,67" fill="none" stroke="#c8a050" stroke-width="2" stroke-linecap="round"/>
+          <!-- Knickerbockers detail -->
+          <rect x="30" y="148" width="50" height="10" rx="4" fill="#2d5a27"/>
+          <!-- Socks -->
+          <rect x="38" y="168" width="14" height="20" rx="4" fill="#e8dfc8"/>
+          <rect x="58" y="168" width="14" height="20" rx="4" fill="#e8dfc8"/>
+          <!-- Argyle on socks -->
+          <line x1="45" y1="170" x2="45" y2="185" stroke="#c9a84c" stroke-width="1" opacity="0.5"/>
+        </svg>
+        <div class="golfer-name">The Blonde</div>
+      </div>
+
+      <!-- GOLFER 2: BROWN #1 -->
+      <div class="golfer">
+        <svg width="110" height="215" viewBox="0 0 110 215" xmlns="http://www.w3.org/2000/svg">
+          <ellipse cx="55" cy="213" rx="30" ry="5" fill="rgba(0,0,0,0.3)"/>
+          <!-- Legs -->
+          <rect x="36" y="148" width="14" height="60" rx="6" fill="#c8864a"/>
+          <rect x="60" y="148" width="14" height="60" rx="6" fill="#c8864a"/>
+          <ellipse cx="43" cy="210" rx="13" ry="5" fill="#2a1a08"/>
+          <ellipse cx="67" cy="210" rx="13" ry="5" fill="#2a1a08"/>
+          <!-- Knickerbockers: wine colored -->
+          <rect x="28" y="100" width="54" height="55" rx="8" fill="#6b2d2d"/>
+          <!-- Knicker band -->
+          <rect x="28" y="148" width="54" height="10" rx="4" fill="#4a1a1a"/>
+          <!-- Polo shirt: mustard yellow -->
+          <rect x="30" y="82" width="50" height="30" rx="6" fill="#c9a84c"/>
+          <!-- Collar -->
+          <path d="M44,82 L55,90 L66,82" fill="#b89030" stroke="#a07820" stroke-width="1"/>
+          <!-- Buttons -->
+          <circle cx="55" cy="94" r="2" fill="#a07820"/>
+          <circle cx="55" cy="103" r="2" fill="#a07820"/>
+          <!-- Arms -->
+          <rect x="12" y="85" width="20" height="12" rx="6" fill="#c9a84c" transform="rotate(30 22 91)"/>
+          <rect x="78" y="85" width="20" height="12" rx="6" fill="#c9a84c" transform="rotate(-60 88 91)"/>
+          <!-- Club (mid-swing) -->
+          <line x1="95" y1="60" x2="55" y2="155" stroke="#5a3a1a" stroke-width="3" stroke-linecap="round"/>
+          <rect x="92" y="54" width="10" height="10" rx="2" fill="#777"/>
+          <!-- Socks -->
+          <rect x="36" y="175" width="14" height="25" rx="4" fill="#e8dfc8"/>
+          <rect x="60" y="175" width="14" height="25" rx="4" fill="#e8dfc8"/>
+          <!-- Head -->
+          <circle cx="55" cy="60" r="25" fill="#e8c090"/>
+          <!-- Brown hair -->
+          <path d="M31,54 Q36,30 55,34 Q74,30 79,54" fill="#5a3010"/>
+          <!-- Flat cap: mustard -->
+          <rect x="30" y="38" width="50" height="13" rx="6" fill="#c9a84c"/>
+          <ellipse cx="55" cy="46" rx="26" ry="7" fill="#b89030"/>
+          <rect x="29" y="45" width="8" height="5" rx="2" fill="#a07820"/>
+          <!-- Eyes -->
+          <circle cx="47" cy="58" r="3" fill="#3a2008"/>
+          <circle cx="63" cy="58" r="3" fill="#3a2008"/>
+          <circle cx="48" cy="57" r="1" fill="white"/>
+          <circle cx="64" cy="57" r="1" fill="white"/>
+          <!-- Raised eyebrow (concentration) -->
+          <path d="M44,52 Q47,49 50,52" fill="none" stroke="#5a3010" stroke-width="1.5"/>
+          <path d="M60,52 Q63,49 66,52" fill="none" stroke="#5a3010" stroke-width="1.5"/>
+          <!-- Focused mouth -->
+          <path d="M49,68 Q55,71 61,68" fill="none" stroke="#a06040" stroke-width="1.5"/>
+          <!-- Beer in hand -->
+          <rect x="85" y="90" width="14" height="22" rx="3" fill="#c9a84c"/>
+          <rect x="85" y="88" width="14" height="5" rx="2" fill="#f5f0e0"/>
+          <rect x="85" y="90" width="14" height="8" rx="0" fill="rgba(255,255,255,0.3)"/>
+        </svg>
+        <div class="golfer-name">El Browner</div>
+      </div>
+
+      <!-- GOLFER 3: BLACK HAIRED -->
+      <div class="golfer">
+        <svg width="110" height="210" viewBox="0 0 110 210" xmlns="http://www.w3.org/2000/svg">
+          <ellipse cx="55" cy="208" rx="30" ry="5" fill="rgba(0,0,0,0.3)"/>
+          <!-- Legs -->
+          <rect x="38" y="150" width="13" height="55" rx="6" fill="#d4a076"/>
+          <rect x="59" y="150" width="13" height="55" rx="6" fill="#d4a076"/>
+          <ellipse cx="44" cy="206" rx="12" ry="5" fill="#1a1008"/>
+          <ellipse cx="65" cy="206" rx="12" ry="5" fill="#1a1008"/>
+          <!-- Body: cream sweater with burgundy trim -->
+          <rect x="28" y="88" width="54" height="65" rx="8" fill="#f5f0e0"/>
+          <!-- Burgundy trim detail -->
+          <rect x="28" y="88" width="54" height="8" rx="4" fill="#8b1a1a"/>
+          <rect x="28" y="143" width="54" height="10" rx="4" fill="#8b1a1a"/>
+          <!-- Collar -->
+          <path d="M43,88 Q55,80 67,88" fill="#e0d5c0" stroke="#ccc" stroke-width="1"/>
+          <!-- Arms -->
+          <rect x="10" y="90" width="20" height="12" rx="6" fill="#f5f0e0" transform="rotate(-20 20 96)"/>
+          <rect x="80" y="90" width="20" height="12" rx="6" fill="#f5f0e0" transform="rotate(40 90 96)"/>
+          <!-- Club (casual lean) -->
+          <line x1="15" y1="155" x2="30" y2="90" stroke="#5a3a1a" stroke-width="3" stroke-linecap="round"/>
+          <rect x="10" y="152" width="10" height="7" rx="2" fill="#666"/>
+          <!-- Socks -->
+          <rect x="38" y="175" width="13" height="20" rx="4" fill="#8b1a1a"/>
+          <rect x="59" y="175" width="13" height="20" rx="4" fill="#8b1a1a"/>
+          <!-- Head -->
+          <circle cx="55" cy="62" r="26" fill="#e8b880"/>
+          <!-- Black hair -->
+          <path d="M30,55 Q32,28 55,32 Q78,28 80,55" fill="#1a1008"/>
+          <!-- Cap: navy blue peaked -->
+          <ellipse cx="55" cy="45" rx="27" ry="9" fill="#1a2a4a"/>
+          <rect x="30" y="37" width="50" height="13" rx="6" fill="#1a2a4a"/>
+          <ellipse cx="33" cy="46" rx="6" ry="4" fill="#142038"/>
+          <!-- Eyes -->
+          <circle cx="47" cy="62" r="3" fill="#2a1808"/>
+          <circle cx="63" cy="62" r="3" fill="#2a1808"/>
+          <circle cx="48" cy="61" r="1" fill="white"/>
+          <circle cx="64" cy="61" r="1" fill="white"/>
+          <!-- Big grin -->
+          <path d="M45,73 Q55,83 65,73" fill="none" stroke="#a06040" stroke-width="2" stroke-linecap="round"/>
+          <!-- Teeth -->
+          <path d="M47,73 Q55,78 63,73" fill="white" opacity="0.8"/>
+          <!-- Beer raised -->
+          <rect x="88" y="85" width="13" height="20" rx="3" fill="#d4a84c"/>
+          <rect x="88" y="82" width="13" height="6" rx="2" fill="#f5f0e0"/>
+          <path d="M88,86 Q94,82 101,86" fill="rgba(255,255,255,0.4)"/>
+          <!-- Foam -->
+          <ellipse cx="94" cy="82" rx="7" ry="3" fill="white" opacity="0.7"/>
+        </svg>
+        <div class="golfer-name">The Dark Knight</div>
+      </div>
+
+      <!-- GOLFER 4: BROWN #2 -->
+      <div class="golfer">
+        <svg width="110" height="210" viewBox="0 0 110 210" xmlns="http://www.w3.org/2000/svg">
+          <ellipse cx="55" cy="208" rx="30" ry="5" fill="rgba(0,0,0,0.3)"/>
+          <!-- Legs (plus fours knickerbockers) -->
+          <rect x="36" y="148" width="14" height="55" rx="7" fill="#b87850"/>
+          <rect x="60" y="148" width="14" height="55" rx="7" fill="#b87850"/>
+          <ellipse cx="43" cy="205" rx="13" ry="5" fill="#2a1808"/>
+          <ellipse cx="67" cy="205" rx="13" ry="5" fill="#2a1808"/>
+          <!-- Plus fours puffed out at knees -->
+          <ellipse cx="43" cy="162" rx="13" ry="7" fill="#8b5e3c"/>
+          <ellipse cx="67" cy="162" rx="13" ry="7" fill="#8b5e3c"/>
+          <!-- Body: green tweed jacket -->
+          <rect x="27" y="87" width="56" height="65" rx="8" fill="#4a7a3a"/>
+          <!-- Jacket lapels -->
+          <polygon points="55,87 40,87 48,110" fill="#3a6a2a"/>
+          <polygon points="55,87 70,87 62,110" fill="#3a6a2a"/>
+          <!-- Shirt collar & tie -->
+          <rect x="48" y="87" width="14" height="15" rx="2" fill="white"/>
+          <polygon points="55,92 52,110 55,115 58,110" fill="#8b1a1a"/>
+          <!-- Arms -->
+          <rect x="10" y="90" width="19" height="13" rx="6" fill="#4a7a3a" transform="rotate(10 19 96)"/>
+          <rect x="81" y="90" width="19" height="13" rx="6" fill="#4a7a3a" transform="rotate(-15 90 96)"/>
+          <!-- Club (address position) -->
+          <line x1="20" y1="168" x2="44" y2="90" stroke="#5a3a1a" stroke-width="3" stroke-linecap="round"/>
+          <rect x="14" y="165" width="11" height="7" rx="2" fill="#555"/>
+          <!-- Socks -->
+          <rect x="36" y="178" width="14" height="18" rx="4" fill="#e8c86a"/>
+          <rect x="60" y="178" width="14" height="18" rx="4" fill="#e8c86a"/>
+          <!-- Head -->
+          <circle cx="55" cy="60" r="26" fill="#f0c090"/>
+          <!-- Brown hair (wavy) -->
+          <path d="M30,52 Q34,30 55,34 Q76,30 80,52" fill="#6b3a14"/>
+          <path d="M30,52 Q32,42 38,48" fill="#6b3a14"/>
+          <path d="M80,52 Q78,42 72,48" fill="#6b3a14"/>
+          <!-- Flat tweed cap: brown -->
+          <ellipse cx="55" cy="44" rx="28" ry="9" fill="#8b5e3c"/>
+          <rect x="29" y="36" width="52" height="13" rx="6" fill="#7a4e2c"/>
+          <ellipse cx="31" cy="45" rx="7" ry="5" fill="#6b3e1c"/>
+          <!-- Eyes -->
+          <circle cx="47" cy="60" r="3" fill="#3a2008"/>
+          <circle cx="63" cy="60" r="3" fill="#3a2008"/>
+          <circle cx="48" cy="59" r="1" fill="white"/>
+          <circle cx="64" cy="59" r="1" fill="white"/>
+          <!-- Smirk -->
+          <path d="M49,70 Q58,77 63,70" fill="none" stroke="#a06040" stroke-width="1.5" stroke-linecap="round"/>
+          <!-- Pipe! -->
+          <path d="M60,72 Q68,68 72,62" fill="none" stroke="#5a3010" stroke-width="2.5" stroke-linecap="round"/>
+          <ellipse cx="73" cy="61" rx="4" ry="3" fill="#3a2010"/>
+          <circle cx="73" cy="55" r="2" fill="rgba(200,200,200,0.4)"/>
+          <circle cx="75" cy="50" r="3" fill="rgba(200,200,200,0.25)"/>
+        </svg>
+        <div class="golfer-name">The Professor</div>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="divider">🍺</div>
+
+  <!-- PREDICTOR -->
+  <section class="predictor-section">
+    <div class="section-title">— Declare Your Intentions, Gentlemen —</div>
+
+    <div class="fields-row">
+      <div class="field-group">
+        <label>
+          <span class="emoji-label">🍺</span>
+          Beers you'll consume
+          <span>Be honest. We know you won't be.</span>
+        </label>
+        <input type="number" id="beers-input" min="0" max="999" placeholder="0" />
+      </div>
+      <div class="field-group">
+        <label>
+          <span class="emoji-label">🐦</span>
+          Birdies you'll make
+          <span>One below par, for the uninitiated.</span>
+        </label>
+        <input type="number" id="birdies-input" min="0" max="99" placeholder="0" />
+      </div>
+    </div>
+
+    <button class="judge-btn" onclick="judge()">⚖️ &nbsp; JUDGE ME &nbsp; ⚖️</button>
+
+    <div class="result-box" id="result-box">
+      <div class="result-emoji" id="result-emoji"></div>
+      <div class="result-title" id="result-title"></div>
+      <div class="result-text" id="result-text"></div>
+    </div>
+  </section>
+
+  <footer>
+    <p>☀️ May your drives be long, your putts be short, and your beers be cold. ☀️</p>
+  </footer>
+
+</div>
+
+<script>
+  // === COUNTDOWN ===
+  function updateCountdown() {
+    const target = new Date('2026-04-03T08:00:00');
+    const now = new Date();
+    const diff = target - now;
+
+    if (diff <= 0) {
+      document.getElementById('cd-days').textContent = '00';
+      document.getElementById('cd-hours').textContent = '00';
+      document.getElementById('cd-mins').textContent = '00';
+      document.getElementById('cd-secs').textContent = '00';
+      return;
+    }
+
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+    const secs = Math.floor((diff % (1000 * 60)) / 1000);
+
+    document.getElementById('cd-days').textContent = String(days).padStart(2, '0');
+    document.getElementById('cd-hours').textContent = String(hours).padStart(2, '0');
+    document.getElementById('cd-mins').textContent = String(mins).padStart(2, '0');
+    document.getElementById('cd-secs').textContent = String(secs).padStart(2, '0');
+  }
+
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
+
+  // === JUDGE ===
+  const tiers = [
+    {
+      test: (b, bi) => b === 0 && bi === 0,
+      tier: 'tier-loser',
+      emoji: '🪣',
+      title: 'SOBER SPECTATOR',
+      text: 'Zero beers. Zero birdies. Are you sure you\'re invited? You\'ll be carrying the bags and handing out towels while the real men play. Bless your heart.'
+    },
+    {
+      test: (b, bi) => b > 50 && bi > 20,
+      tier: 'tier-delusional',
+      emoji: '🌈🦄',
+      title: 'CLINICALLY DELUSIONAL',
+      text: `beers AND birdies? Sir, you can barely SEE the golf ball after beer number 8. Tiger Woods on his best day didn't make 20 birdies, and he wasn't doing it while blackout drunk. We're going to need you to sit down, drink some water, and have a long hard look at your life choices. Incredible scenes.`
+    },
+    {
+      test: (b, bi) => b > 50,
+      tier: 'tier-delusional',
+      emoji: '🚑',
+      title: 'MEDICAL EMERGENCY',
+      text: 'Over 50 beers. We\'ve already pre-booked you a stomach pump and a cab home. The course ranger has been notified. Your emergency contact has been alerted. The good news: you won\'t remember any of it.'
+    },
+    {
+      test: (b, bi) => bi > 20,
+      tier: 'tier-delusional',
+      emoji: '🤡',
+      title: 'PATHOLOGICAL OPTIMIST',
+      text: 'More than 20 birdies? Over 18 holes? That\'s statistically impossible even for a Tour pro. You\'re either playing the wrong sport, counting wrong, or simply a congenital liar. Remarkable confidence. Absolutely no shame. We respect it.'
+    },
+    {
+      test: (b, bi) => b >= 1 && b <= 3 && bi === 0,
+      tier: 'tier-loser',
+      emoji: '😬',
+      title: 'THE DESIGNATED DRIVER',
+      text: 'A couple of light ones and not a single birdie. You\'re technically present but you might as well be in the clubhouse doing the crossword. The lads appreciate the Volvo, though.'
+    },
+    {
+      test: (b, bi) => b >= 1 && b <= 5 && bi >= 1 && bi <= 3,
+      tier: 'tier-casual',
+      emoji: '🙂',
+      title: 'RESPECTABLE WEEKEND GOLFER',
+      text: 'Sensible beer intake, a birdie or two. You\'ll finish the round without falling over and remember most of it. Not exactly legend material, but Mum would be proud. Solid C+.'
+    },
+    {
+      test: (b, bi) => b >= 6 && b <= 12 && bi >= 1 && bi <= 5,
+      tier: 'tier-solid',
+      emoji: '😎',
+      title: 'THE GOLDEN STANDARD',
+      text: 'Now we\'re talking. Enough beers to be properly dangerous, enough birdies to back it up at the 19th hole. You\'ll be buying a round AND telling a story worth repeating. The lads nod approvingly.'
+    },
+    {
+      test: (b, bi) => b >= 26 && b <= 40 && bi >= 8 && bi <= 16,
+      tier: 'tier-hero',
+      emoji: '🏆',
+      title: 'ABSOLUTE UNIT',
+      text: 'Heroic beer numbers, genuinely impressive birdie count. You are the reason this trip exists. Songs will be written. Legends will be told. Someone will absolutely make you a trophy out of beer cans.'
+    },
+    {
+      test: (b, bi) => b === 0 && bi > 0,
+      tier: 'tier-casual',
+      emoji: '🧘',
+      title: 'MONK MODE GOLFER',
+      text: 'No beers but actually making birdies — are you even human? You\'re either a scratch handicapper or you\'ve fundamentally misunderstood what this trip is about. We\'ll begrudgingly admire your scorecard.'
+    },
+    {
+      test: (b, bi) => b >= 10 && bi === 0,
+      tier: 'tier-loser',
+      emoji: '🫠',
+      title: 'HERE FOR THE VIBES',
+      text: 'That many beers and not a single birdie? We both know you stopped tracking your score on hole 4. The club spent more time in the water than in the air. But honestly — you had the time of your life, didn\'t you.'
+    },
+    {
+      test: (b, bi) => true,
+      tier: 'tier-casual',
+      emoji: '🏌️',
+      title: 'COMPETENT GENTLEMAN',
+      text: 'A solid, unremarkable performance. You\'ll do fine. Not the hero, not the cautionary tale. Somewhere gloriously in the middle. We\'ll see you at the 19th hole.'
+    }
+  ];
+
+  function judge() {
+    const beers = parseInt(document.getElementById('beers-input').value) || 0;
+    const birdies = parseInt(document.getElementById('birdies-input').value) || 0;
+
+    // Special delusional handling with actual values
+    if (beers > 50 && birdies > 20) {
+      showResult(
+        'tier-delusional', '🌈🦄',
+        'CLINICALLY DELUSIONAL',
+        `${beers} beers AND ${birdies} birdies?! Sir, you can barely SEE the golf ball after beer number 8. Tiger Woods on his absolute best day didn't make ${birdies} birdies, and he wasn't doing it blackout drunk. We need you to sit down, drink some water, and have a serious conversation with yourself. Astonishing audacity. Truly.`
+      );
+      return;
+    }
+
+    for (const tier of tiers) {
+      if (tier.test(beers, birdies)) {
+        showResult(tier.tier, tier.emoji, tier.title, tier.text);
+        return;
+      }
+    }
+  }
+
+  function showResult(tierClass, emoji, title, text) {
+    const box = document.getElementById('result-box');
+    box.className = 'result-box ' + tierClass;
+    document.getElementById('result-emoji').textContent = emoji;
+    document.getElementById('result-title').textContent = title;
+    document.getElementById('result-text').textContent = text;
+    // Re-trigger animation
+    box.classList.remove('show');
+    void box.offsetWidth;
+    box.classList.add('show');
+    box.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
+</script>
+</body>
+</html>
