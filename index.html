@@ -778,32 +778,25 @@
       text: 'Zero beers. Zero birdies. Are you sure you\'re invited? You\'ll be carrying the bags and handing out towels while the real men play. Bless your heart.'
     },
     {
-      test: (b, bi) => b > 50 && bi > 20,
-      tier: 'tier-delusional',
-      emoji: '🌈🦄',
-      title: 'CLINICALLY DELUSIONAL',
-      text: `beers AND birdies? Sir, you can barely SEE the golf ball after beer number 8. Tiger Woods on his best day didn't make 20 birdies, and he wasn't doing it while blackout drunk. We're going to need you to sit down, drink some water, and have a long hard look at your life choices. Incredible scenes.`
-    },
-    {
-      test: (b, bi) => b > 50,
-      tier: 'tier-delusional',
-      emoji: '🚑',
-      title: 'MEDICAL EMERGENCY',
-      text: 'Over 50 beers. We\'ve already pre-booked you a stomach pump and a cab home. The course ranger has been notified. Your emergency contact has been alerted. The good news: you won\'t remember any of it.'
-    },
-    {
-      test: (b, bi) => bi > 20,
-      tier: 'tier-delusional',
-      emoji: '🤡',
-      title: 'PATHOLOGICAL OPTIMIST',
-      text: 'More than 20 birdies? Over 18 holes? That\'s statistically impossible even for a Tour pro. You\'re either playing the wrong sport, counting wrong, or simply a congenital liar. Remarkable confidence. Absolutely no shame. We respect it.'
-    },
-    {
       test: (b, bi) => b >= 1 && b <= 3 && bi === 0,
       tier: 'tier-loser',
       emoji: '😬',
       title: 'THE DESIGNATED DRIVER',
       text: 'A couple of light ones and not a single birdie. You\'re technically present but you might as well be in the clubhouse doing the crossword. The lads appreciate the Volvo, though.'
+    },
+    {
+      test: (b, bi) => b >= 10 && bi === 0,
+      tier: 'tier-loser',
+      emoji: '🫠',
+      title: 'HERE FOR THE VIBES',
+      text: 'That many beers and not a single birdie? We both know you stopped tracking your score on hole 4. The club spent more time in the water than in the air. But honestly — you had the time of your life, didn\'t you.'
+    },
+    {
+      test: (b, bi) => b === 0 && bi > 0,
+      tier: 'tier-casual',
+      emoji: '🧘',
+      title: 'MONK MODE GOLFER',
+      text: 'No beers but actually making birdies — are you even human? You\'re either a scratch handicapper or you\'ve fundamentally misunderstood what this trip is about. We\'ll begrudgingly admire your scorecard.'
     },
     {
       test: (b, bi) => b >= 1 && b <= 5 && bi >= 1 && bi <= 3,
@@ -820,25 +813,11 @@
       text: 'Now we\'re talking. Enough beers to be properly dangerous, enough birdies to back it up at the 19th hole. You\'ll be buying a round AND telling a story worth repeating. The lads nod approvingly.'
     },
     {
-      test: (b, bi) => b >= 26 && b <= 40 && bi >= 8 && bi <= 16,
+      test: (b, bi) => b >= 26 && b <= 40 && bi >= 8 && bi <= 12,
       tier: 'tier-hero',
       emoji: '🏆',
       title: 'ABSOLUTE UNIT',
       text: 'Heroic beer numbers, genuinely impressive birdie count. You are the reason this trip exists. Songs will be written. Legends will be told. Someone will absolutely make you a trophy out of beer cans.'
-    },
-    {
-      test: (b, bi) => b === 0 && bi > 0,
-      tier: 'tier-casual',
-      emoji: '🧘',
-      title: 'MONK MODE GOLFER',
-      text: 'No beers but actually making birdies — are you even human? You\'re either a scratch handicapper or you\'ve fundamentally misunderstood what this trip is about. We\'ll begrudgingly admire your scorecard.'
-    },
-    {
-      test: (b, bi) => b >= 10 && bi === 0,
-      tier: 'tier-loser',
-      emoji: '🫠',
-      title: 'HERE FOR THE VIBES',
-      text: 'That many beers and not a single birdie? We both know you stopped tracking your score on hole 4. The club spent more time in the water than in the air. But honestly — you had the time of your life, didn\'t you.'
     },
     {
       test: (b, bi) => true,
@@ -853,12 +832,53 @@
     const beers = parseInt(document.getElementById('beers-input').value) || 0;
     const birdies = parseInt(document.getElementById('birdies-input').value) || 0;
 
-    // Special delusional handling with actual values
-    if (beers > 50 && birdies > 20) {
+    const overBeers = beers > 40;
+    const overBirdies = birdies > 12;
+
+    // LEVEL 3 — Both massively over (the full send)
+    if (beers > 80 && birdies > 24) {
+      showResult(
+        'tier-delusional', '🌈🦄💀',
+        'HOSPITALISED & DISQUALIFIED',
+        `${beers} beers AND ${birdies} birdies over two days?! You are not a golfer. You are not even a human being at this point. You are a cautionary tale that will be told at golf clubs for generations. Medical staff have been pre-positioned at every hole. Your family has been notified. Truly, astoundingly, historically delusional.`
+      );
+      return;
+    }
+
+    // LEVEL 2 — Significantly over on both
+    if (beers > 60 && birdies > 18) {
       showResult(
         'tier-delusional', '🌈🦄',
         'CLINICALLY DELUSIONAL',
-        `${beers} beers AND ${birdies} birdies?! Sir, you can barely SEE the golf ball after beer number 8. Tiger Woods on his absolute best day didn't make ${birdies} birdies, and he wasn't doing it blackout drunk. We need you to sit down, drink some water, and have a serious conversation with yourself. Astonishing audacity. Truly.`
+        `${beers} beers AND ${birdies} birdies?! Sir, you can barely SEE the golf ball after beer number 12. Tiger Woods on his absolute best day didn't make ${birdies} birdies, and he wasn't doing it blackout drunk. We need you to sit down, drink some water, and have a serious conversation with yourself. Astonishing audacity. Truly.`
+      );
+      return;
+    }
+
+    // LEVEL 1 — Mildly over the limit on either or both
+    if (overBeers && overBirdies) {
+      showResult(
+        'tier-delusional', '🤯',
+        'DANGEROUSLY OPTIMISTIC',
+        `${beers} beers and ${birdies} birdies is… a lot. We admire the ambition. We question the liver. We worry about the scorecard. This is what happens when confidence outpaces ability by a country mile. Still, respect for the audacity.`
+      );
+      return;
+    }
+
+    if (overBeers) {
+      showResult(
+        'tier-delusional', '🚑',
+        'MEDICAL EMERGENCY (BEER DIVISION)',
+        `${beers} beers over two days? The course ranger has already called ahead to the hospital. Your shoes will be used as evidence. The good news: you won't remember any of it, and neither will your handicap.`
+      );
+      return;
+    }
+
+    if (overBirdies) {
+      showResult(
+        'tier-delusional', '🤡',
+        'PATHOLOGICAL OPTIMIST',
+        `${birdies} birdies over two days? That's statistically impossible even for a Tour pro who is also sober, which you will not be. You're either playing the wrong sport, counting wrong, or simply a congenital liar. Remarkable confidence. Absolutely no shame. We respect it.`
       );
       return;
     }
